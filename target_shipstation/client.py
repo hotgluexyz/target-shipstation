@@ -8,7 +8,8 @@ class ShipStationSink(HotglueSink):
     @property
     def http_headers(self) -> dict:
         """Return the http headers needed."""
-        token = base64.b64encode(f"{self.config.get('api_key')}:{self.config.get('api_password')}").decode("utf-8")
+        encoded_string = f"{self.config.get('api_key')}:{self.config.get('api_password')}".encode("utf-8")
+        token = base64.b64encode(encoded_string).decode("utf-8")
         headers = {
             "Authorization": f"Basic {token}"
         }
