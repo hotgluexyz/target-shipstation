@@ -21,5 +21,5 @@ class ShipStationSink(HotglueSink):
         method = "POST"
 
         response = self.request_api(method, request_data=record)
-        id = response.json().get("id")
+        id = response.json().get("orderId")
         return id, True, dict()
